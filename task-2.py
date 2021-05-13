@@ -10,22 +10,27 @@ for number in range(1001):
 for cube_number in cube_list:
     cube_number_plus_17 = cube_number + 17
 
-    cube_number_list = list(str(cube_number))
-    cube_number_plus_17_list = list(str(cube_number_plus_17))
+    init_code_number = cube_number
+    init_code_plus_17 = cube_number_plus_17
 
     summa_digits = 0
     summa_digits_plus_17 = 0
-    for cube_number_digit in cube_number_list:
-        summa_digits += int(cube_number_digit)
 
-    for cube_number_digit in cube_number_plus_17_list:
-        summa_digits_plus_17 += int(cube_number_digit)
+    while cube_number > 0:
+        digit = cube_number % 10
+        summa_digits += digit
+        cube_number //= 10
+
+    while cube_number_plus_17 > 0:
+        digit = cube_number_plus_17 % 10
+        summa_digits_plus_17 += digit
+        cube_number_plus_17 //= 10
 
     if summa_digits % 7 == 0:
-        summa += cube_number
+        summa += init_code_number
 
     if summa_digits_plus_17 % 7 == 0:
-        summa_digits_plus_17 += cube_number_plus_17
+        summa_digits_plus_17 += init_code_plus_17
 
 print(f"Cумма чисел из этого списка "
       f"(состоящий из кубов нечётных чисел от 0 до 1000),"
