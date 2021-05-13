@@ -11,7 +11,7 @@ for cube_number in cube_list:
     cube_number_plus_17 = cube_number + 17
 
     cube_number_list = list(str(cube_number))
-    cube_number_plus_17_list = list(str(cube_number))
+    cube_number_plus_17_list = list(str(cube_number_plus_17))
 
     summa_digits = 0
     summa_digits_plus_17 = 0
