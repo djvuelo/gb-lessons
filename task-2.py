@@ -30,7 +30,7 @@ for cube_number in cube_list:
         summa += init_code_number
 
     if summa_digits_plus_17 % 7 == 0:
-        summa_digits_plus_17 += init_code_plus_17
+        summa_plus_17 += init_code_plus_17
 
 print(f"Cумма чисел из этого списка "
       f"(состоящий из кубов нечётных чисел от 0 до 1000),"
@@ -38,4 +38,4 @@ print(f"Cумма чисел из этого списка "
 
 print(f"Cумма чисел из этого списка "
       f"(состоящий из кубов нечётных чисел от 0 до 1000 и прибавить 17),"
-      f" сумма цифр которых делится нацело на 7: {summa_digits_plus_17}")
+      f" сумма цифр которых делится нацело на 7: {summa_plus_17}")
