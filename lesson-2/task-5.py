@@ -16,7 +16,7 @@ price_description(prices)
 print("Сортировка по возрастанию:")
 print(f"Обьект списка до сортировки: {id(prices)}")
 prices.sort()
-print(f"Обьект списка до сортировки: {id(prices)}")
+print(f"Обьект списка после сортировки: {id(prices)}")
 price_description(prices)
 
 # третья часть
@@ -26,4 +26,4 @@ price_description(reversed_prices)
 
 # четвертая часть
 print("5 самых дорогих товара:")
-price_description(prices[-5::])
+price_description(prices[-5:])
