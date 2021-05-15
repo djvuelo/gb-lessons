@@ -6,7 +6,7 @@ prices = [57.08, 46.51, 97, 51, 1.76, 20, 25.08, 76, 23.34, 98.90,
 # первая часть
 def price_description(prices):
     for price in prices:
-        print(f'{price // 1:.0f} руб. {(price - price // 1) * 100:02.0f} коп.')
+        print(f'{price // 1:.0f} руб. {(price % 1) * 100:02.0f} коп.')
 
 
 print("Вывод списка в отформатированном формате:")
