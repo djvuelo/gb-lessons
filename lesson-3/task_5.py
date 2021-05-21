@@ -35,4 +35,4 @@ def get_jokes(count, unique=False):
     return jokes_list
 
 
-print(str(get_jokes(count=2)), sep='\n')
+print(str(get_jokes(count=2)))
