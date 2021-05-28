@@ -6,7 +6,7 @@ from datetime import datetime
 def currency_rates(code_valuta, fields=['value']):
     """
     :param code_valuta: code valuta
-    :param fields: What fields get
+    :param fields: What fields get (nominal, name, value)
     :return: dict with fields
     """
     result = {}
