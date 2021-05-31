@@ -18,6 +18,6 @@ if __name__ == '__main__':
     if len(argv) == 2:
         read_sale(int(argv[1]))
     elif len(argv) == 3:
-        read_sale(int(argv[1]), argv[2])
+        read_sale(int(argv[1]), int(argv[2]))
     else:
         read_sale()
