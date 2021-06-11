@@ -1,33 +1,35 @@
-from socket import socket
+from collections import defaultdict
+from os.path import relpath
+import django
+import os
+from shutil import copy2, rmtree
 
 from task_2 import myyaml, parse, startapps
 
-# import os
-# from collections import defaultdict
-# from os.path import relpath
-#
-# import django
-#
-# root_dir = 'my_project'
-# django_files = defaultdict(list)
-#
-# for root, dirs, files in os.walk(root_dir):
-#    for file in files:
-#        ext = file.rsplit('.', maxsplit=1)[-1].lower()
-#        rel_path = relpath(os.path.join(root, file), root_dir)
-#        django_files[ext].append(rel_path)
-#
-# for ext, files in sorted(django_files.items(),
-#                         key=lambda x: len(x[1]), reverse=True):
-#
-#    print(f'{ext}: {len(files)}')
-#
-# print('\nPY FILES')
-# print(*sorted(django_files['html'])[:10], sep='\n')
+root_dir = 'my_project'
+both_tpls = os.path.join(root_dir, 'templates')
 
+if not os.path.exists(root_dir):
+    structure = parse(myyaml('config_task_3.yaml'))
+    startapps(structure)
 
-structure = parse(myyaml('config_task_3.yaml'))
-startapps(structure)
+django_tpls = []
 
-root_project = 'my_project'
+for root, dirs, files in os.walk(root_dir):
+    for file in files:
+        rel_path = os.path.join(root, file)
+        if rel_path.split('/')[1] == 'templates':
+            continue
+        if rel_path.find('templates') != -1:
+            django_tpls.append(rel_path)
 
+if os.path.exists(both_tpls):
+    rmtree(both_tpls)
+
+for tpl in django_tpls:
+    new_path_tpl = os.path.join(root_dir, os.path.join(*tpl.split('/')[2::]))
+    new_dirs = os.path.split(new_path_tpl)
+    if not os.path.exists(new_dirs[0]):
+        os.makedirs(new_dirs[0])
+    copy2(tpl, new_path_tpl)
+    print(tpl + '--->' + new_path_tpl + '--->' + new_dirs[0])

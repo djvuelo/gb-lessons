@@ -37,18 +37,19 @@ def parse(config_strokes, container=[]):
 def startapps(structures, files=[], path=''):
     if type(structures) == dict:
         for structure in structures:
-            path += f'/' + structure
+            path = os.path.join(path, structure)
 
-            if not os.path.exists(path[1::]):
-                os.makedirs(path[1::])
+            if not os.path.exists(path):
+                os.makedirs(path)
 
             startapps(structures[structure], files, path)
     elif type(structures) == list:
         for structure in structures:
             if type(structure) == str:
-                files.append(f'{path[1::]}/{structure}')
-                if not os.path.exists(f'{path[1::]}/{structure}'):
-                    file = open(f'{path[1::]}/{structure}', 'w', encoding='UTF-8')
+                file_path = os.path.join(path, structure)
+                files.append(file_path)
+                if not os.path.exists(file_path):
+                    file = open(file_path, 'w', encoding='UTF-8')
                     file.close()
             else:
                 startapps(structure, files, path)
