@@ -38,7 +38,6 @@ def startapps(structures, files=[], path=''):
     if type(structures) == dict:
         for structure in structures:
             path = os.path.join(path, structure)
-
             if not os.path.exists(path):
                 os.makedirs(path)
 
