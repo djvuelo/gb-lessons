@@ -7,6 +7,9 @@ class Clothes(ABC):
     def fabric_consumption(self):
         pass
 
+    def __add__(self, other):
+        return self.fabric_consumption + other.fabric_consumption
+
 
 class Coat(Clothes):
     def __init__(self, v):
@@ -28,5 +31,7 @@ class Costume(Clothes):
 
 coat1 = Coat(100)
 costume1 = Costume(200)
+costume2 = Costume(140)
 print(coat1.fabric_consumption)
 print(costume1.fabric_consumption)
+print(f'Общий расход: {coat1 + costume1}')
